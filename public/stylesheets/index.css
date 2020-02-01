@@ -1,0 +1,11 @@
+* {
+    font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+}
+
+.list {
+    padding-left: 0px;
+}
+
+.list li{
+    display: inline;
+}

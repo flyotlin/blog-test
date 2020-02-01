@@ -1,0 +1,29 @@
+{
+  "name": "blog-hw",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "cookie-session": "^1.4.0",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "mongoose": "^5.8.10",
+    "morgan": "~1.9.1"
+  },
+  "description": "*** Some Useful Command ***\r  change directory:\r      $ cd blog_hw",
+  "main": "app.js",
+  "devDependencies": {},
+  "author": "flyotlin",
+  "license": "MIT",
+  "keywords": [
+    "\"blog\"",
+    "\"mongodb\"",
+    "\"ejs\"",
+    "\"express\""
+  ]
+}

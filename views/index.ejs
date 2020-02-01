@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+  </head>
+  <body>
+    <ul class="list">
+      <li><a href="/">首頁</a></li>
+      <% if(authenticated) { %>
+        <li><a href="/users/signout">登出</a></li>
+        <li><a href="/users/add_article">新增文章</a></li>
+        <li><a href="/users/profile">個人</a></li>
+        <li><b><%= user %></b></li>
+      <% } else { %>
+        <li><a href="/users/login">登入</a></li>
+        <li><a href="/users/register">註冊</a></li>
+      <% } %>
+    </ul>
+
+    <h1><%= title %></h1>
+    <p>歡迎來到<%= title %></p>
+	
+    <hr>
+
+    <h2>討論版</h2>
+    <table>
+      <th>
+        <!-- <td>使用者</td> -->
+        <td><b>文章ID</b></td>
+        <td><b>內容</b></td>
+        <td><b>時間</b></td>
+      </th>
+      <% for(var i = 0; i < blogs.length; i++) { %>
+        <tr>
+          <td><b><%= blogs[i].Username %></b></td>
+          <td><a href="/users/article/<%= blogs[i]._id %>"><%= blogs[i]._id %></a></td>
+          <td><%= blogs[i].Article %></td>
+          <td><%= blogs[i].CreateDate %></td>
+        </tr>
+      <% } %>
+    </table>
+
+
+    <!-- <br>
+    <% for(var i = 0; i < blogs.length; i++) { %>
+      <div>
+        <div>
+          <%= blogs[i].Username %>
+        </div>
+        <div>
+          <%= blogs[i].CreateDate %>
+        </div>
+        <div>
+          <%= blogs[i].Article %>
+        </div>
+        <hr>
+      </div>
+    <% } %> -->
+  </body>
+</html>

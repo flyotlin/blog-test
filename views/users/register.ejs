@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title%></title>
+    <link rel='stylesheet' href='/stylesheets/index.css' />
+</head>
+<body>
+    <ul class="list">
+        <li><a href="/">首頁</a></li>
+        <li><a href="/users/login">登入</a></li>
+        <li><a href="/users/register">註冊</a></li>
+    </ul>
+    <h1>註冊</h1>
+    <form action="/users/register_action" method="POST">
+        <label for="user">使用者名稱:</label>
+        <input type="text" name="user" id="user" placeholder="nick"/>
+        <br>
+        <label for="passwd">密碼:</label>
+        <input type="password" name="passwd" id="passwd"/>
+        <br>
+        <input type="submit" value="註冊"/>
+    </form>
+</body>
+</html>

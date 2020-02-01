@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title%></title>
+    <link rel="stylesheet" href="/stylesheets/index.css">
+</head>
+<body>
+    <ul class="list">
+        <li><a href="/">首頁</a></li>
+        <!-- <li><a href="/users/signout">登出</a></li>
+        <li><a href="/users/profile">個人</a></li> -->
+    </ul>
+    <h1>留言</h1>
+    <h3>使用者: <%= user %></h3>
+    <!-- 這邊要用RouteParameter傳送user以及article_id給post -->
+    <form action="/users/add_message/<%= user %>/<%= article_id%>" method="POST">
+        <textarea name="Content" id="" cols="50" rows="25"></textarea>
+        <input type="submit" name="submit" value="送出">
+    </form>
+</body>
+</html>
