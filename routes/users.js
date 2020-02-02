@@ -139,9 +139,9 @@ router.post('/add', function(req, res, next) {
 
 /* 文章功能頁面(包含留言、修改等功能) */
 router.get('/article/:id', function(req, res) {
-  // var Username, Article;
+
   var ID = req.params.id;
-  
+
   /* 找出這篇文章的留言 要加上一些條件 */
   Message.find({ ArticleID: req.params.id }, function(err, message) {
     if(!err) {
@@ -153,11 +153,15 @@ router.get('/article/:id', function(req, res) {
           article_content: result_blog.Article,
           session_logined: req.session.logined,
           session_name: req.session.user,
-          result_message: message
+          result_message: message,
         });
         console.log("result_message結果" + message);
       });
     }
+
+
+    });
+    
   });
 
 
@@ -174,7 +178,7 @@ router.get('/article/:id', function(req, res) {
   // });
 
   
-});
+
 
 /* 修改文章頁面 */
 router.get('/change_article/:id', function(req, res) {
@@ -184,12 +188,13 @@ router.get('/change_article/:id', function(req, res) {
   } else {
     /* 找到該ID物件 */
     Blog.findOne({_id: req.params.id}).exec(function(err, result) {
+      
       /* result為該物件 生成change_article頁面 */
       res.render('./users/change_article', {
         title: '修改文章',
         user: req.session.user,
         previous_content: result.Article,
-        article_id: req.params.id
+        article_id: req.params.id, 
       });
     });
   }
@@ -250,6 +255,49 @@ router.post('/add_message/:user/:article_id', function(req, res) {
     } else {
       res.redirect('/');
     }
+  });
+});
+
+/* 修改留言頁面 */
+router.get('/change_message/:message_id', function(req, res) {
+  console.log(req.session.user);
+  /* 只有登入者才可以修改留言 */
+  if(!req.session.logined) {
+    res.redirect('/');
+  } else {
+    Message.findOne({_id: req.params.message_id}).exec(function(err, result) {
+      res.render('./users/change_message', {
+        title: '修改留言',
+        user: req.session.user,
+        previous_content: result.Comment, 
+        message_id: req.params.message_id
+      });
+    });
+  }
+  
+});
+
+/* 修改留言功能 */
+router.post('/change_message/:message_id', function(req, res) {
+  Message.update({_id: req.params.message_id}, {Comment: req.body.Content}, function(err) {
+    if(err) {
+      console.log('Unable to update the message!');
+    } else {
+      console.log('Successful!');
+    }
+    res.redirect('/');
+  });
+});
+
+/* 刪除留言 */
+router.get('/delete_message/:message_id', function(req, res) {
+  Message.remove({_id: req.params.message_id}, function(err) {
+    if(err) {
+      console.log('無法順利刪除留言');
+    } else {
+      console.log('已經成功刪除留言!');
+    }
+    res.redirect('/');
   });
 });
 

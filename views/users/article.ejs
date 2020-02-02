@@ -14,7 +14,7 @@
     <h3>作者: <%= article_author%></h3>
     <div style="border: 1px solid black; width: 30%;">
         <h3>內容: </h3>
-        <p><%= article_content%></p>
+        <pre><%= article_content%></pre>
     </div>
     <div>
         <a href="/users/message/<%= article_id%>">留言</a>
@@ -40,6 +40,18 @@
                     <td><%= result_message[i].Visitor %></td>
                     <td><%= result_message[i].Comment %></td>
                     <td><%= result_message[i].CreateDate %></td>
+                    <!-- 等下加上使用者判斷 連結用Route Parameter傳送message _id-->
+                    <!-- 判斷有沒有登入 判斷登入用戶與留言者是否相同 -->
+
+                    <!-- session_logined:有登入 非訪客 
+                         登入者(session_name)與留言者(result_message[i].Visitor)相同
+                    或是 管理員登入
+                    -->
+                    <% if( session_logined && (session_name == result_message[i].Visitor) ) { %>
+                        <td><a href="/users/change_message/<%= result_message[i]._id%>">修改</a></td>
+                        <td><a href="/users/delete_message/<%= result_message[i]._id%>">刪除</a></td>
+                    <% } %>
+                    <td></td>
                 </tr>
             <% } %>   
             
