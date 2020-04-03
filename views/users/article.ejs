@@ -2,60 +2,79 @@
 <html>
 <head>
     <title><%= article_author%>的文章</title>
-    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/users/article_p.css">
 </head>
 <body>
-    <ul class="list">
-        <li><a href="/">首頁</a></li>
-        <li><a href="/users/signout">登出</a></li>
-        <li><a href="/users/profile">個人</a></li>
-    </ul>
-    <h1>文章編號: <%= article_id%></h1>
-    <h3>作者: <%= article_author%></h3>
-    <div style="border: 1px solid black; width: 30%;">
-        <h3>內容: </h3>
-        <pre><%= article_content%></pre>
-    </div>
-    <div>
-        <a href="/users/message/<%= article_id%>">留言</a>
-        
-        <!-- 如果有登入 且 如果session用戶名與文章作者名相同 -->
-        <% if( session_logined && (session_name == article_author) ) { %>
-            <a href="/users/change_article/<%= article_id%>">修改</a>
-            <a href="/users/delete_article/<%= article_id%>">刪除</a>
-        <% } %>
-    </div>
-    <div>
-        <h2>留言</h2>
-        <table>
-            <th>
-                <td>留言者</td>
-                <td>留言內容</td>
-                <td>留言時間</td>
-            </th>
+    <nav>
+        <ul class="list">
+            <li><a href="/">首頁</a></li>
+            <div id="nav_right">
+                <% if(session_logined) { %>
+                    <li><a href="/users/signout">登出</a></li>
+                    <li>使用者:<b><%= session_name %></b></li>
+                <% } else { %>
+                    <li><a href="/users/login">登入</a></li>
+                    <li><a href="/users/register">註冊</a></li>
+                <% } %>
+            </div>
+        </ul>
+    </nav>
+    <header>
+        <h1>文章編號: <%= article_id%></h1>
+    </header>
+    <main>
+        <h2>文章內容</h2>
+        <h3>作者: <%= article_author%></h3>
+        <h3 style="margin-bottom: 0px;">內容: </h3>
+        <div>
+            <p id="article"><%= article_content%></p>
+        </div>
+        <div class="function_message">
             
-            <% for(var i = 0; i < result_message.length; i++) { %>
+            <a href="/users/message/<%= article_id%>">留言</a>
+            
+            <!-- 如果有登入 且 如果session用戶名與文章作者名相同 -->
+            <% if( session_logined && (session_name == article_author) ) { %>
+                <a href="/users/change_article/<%= article_id%>">修改</a>
+                <a href="/users/delete_article/<%= article_id%>">刪除</a>
+            <% } %>
+           
+        </div>
+        <div>
+            <h2>留言</h2>
+            <table>
                 <tr>
-                    <td></td>
-                    <td><%= result_message[i].Visitor %></td>
-                    <td><%= result_message[i].Comment %></td>
-                    <td><%= result_message[i].CreateDate %></td>
-                    <!-- 等下加上使用者判斷 連結用Route Parameter傳送message _id-->
-                    <!-- 判斷有沒有登入 判斷登入用戶與留言者是否相同 -->
-
-                    <!-- session_logined:有登入 非訪客 
-                         登入者(session_name)與留言者(result_message[i].Visitor)相同
-                    或是 管理員登入
-                    -->
-                    <% if( session_logined && (session_name == result_message[i].Visitor) ) { %>
-                        <td><a href="/users/change_message/<%= result_message[i]._id%>">修改</a></td>
-                        <td><a href="/users/delete_message/<%= result_message[i]._id%>">刪除</a></td>
-                    <% } %>
-                    <td></td>
+                    <th>留言者</th>
+                    <th style="width: 50%;">留言內容</th>
+                    <th>留言時間</th>
                 </tr>
-            <% } %>   
-            
-        </table>
-    </div>
+                
+                <% for(var i = 0; i < result_message.length; i++) { %>
+                    <tr>
+                        <td><%= result_message[i].Visitor %></td>
+                        <td><%= result_message[i].Comment %></td>
+                        <td><%= result_message[i].CreateDate %></td>
+                        <!-- 等下加上使用者判斷 連結用Route Parameter傳送message _id-->
+                        <!-- 判斷有沒有登入 判斷登入用戶與留言者是否相同 -->
+    
+                        <!-- session_logined:有登入 非訪客 
+                             登入者(session_name)與留言者(result_message[i].Visitor)相同
+                        或是 管理員登入
+                        -->
+
+                        <% if( session_logined && (session_name == result_message[i].Visitor) ) { %>
+                            <td class="function_message wide"><a href="/users/change_message/<%= result_message[i]._id%>">修改</a></td>
+                            <td class="function_message wide"><a href="/users/delete_message/<%= result_message[i]._id%>">刪除</a></td>
+                        <% } %>
+                        
+                    </tr>
+                <% } %>   
+                
+            </table>
+        </div>
+    </main>
+    <footer>
+        <p>手機：0916-680-923 電子郵件：flyotlin@gmail.com  ©  2020  All Rights Reserved</p>
+    </footer>
 </body>
 </html>

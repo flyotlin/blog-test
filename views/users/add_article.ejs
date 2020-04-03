@@ -2,19 +2,37 @@
 <html>
 <head>
     <title><%= title%></title>
-    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/users/add_article_p.css">
 </head>
 <body>
-    <ul class="list">
-        <li><a href="/">首頁</a></li>
-        <li><a href="/users/signout">登出</a></li>
-        <li><a href="/users/profile">個人</a></li>
-    </ul>
-    <h1>新增文章</h1>
-    <h3>使用者: <%= user %></h3>
-    <form action="/users/add" method="POST">
-        <textarea name="Content" id="" cols="50" rows="25"></textarea>
-        <input type="submit" name="submit" value="保存">
-    </form>
+    <nav>
+        <ul class="list">
+            <li><a href="/">首頁</a></li>
+            <div id="nav_right">
+                <li><a href="/users/signout">登出</a></li>
+                <li>使用者:<b><%= user %></b></li>
+            </di    v>
+            
+        </ul>
+    </nav>
+    <header>
+        <h1>新增文章</h1>
+    </header>
+
+    <main>
+        <h3>使用者: <%= user %></h3>
+        <h3 >內容:</h3>
+        <form action="/users/add" method="POST">
+            <textarea name="Content" id="" cols="100" rows="15" placeholder="Type something here!"></textarea>
+            <input type="submit" name="submit" value="保存">
+        </form>
+    </main>
+
+    <footer>
+        <p>手機：0916-680-923 電子郵件：flyotlin@gmail.com  ©  2020  All Rights Reserved</p>
+    </footer>
+    
+    
+    
 </body>
 </html>

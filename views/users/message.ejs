@@ -2,20 +2,38 @@
 <html>
 <head>
     <title><%= title%></title>
-    <link rel="stylesheet" href="/stylesheets/index.css">
+    <link rel="stylesheet" href="/stylesheets/users/change.css">
 </head>
 <body>
-    <ul class="list">
-        <li><a href="/">首頁</a></li>
-        <!-- <li><a href="/users/signout">登出</a></li>
-        <li><a href="/users/profile">個人</a></li> -->
-    </ul>
-    <h1>留言</h1>
-    <h3>使用者: <%= user %></h3>
-    <!-- 這邊要用RouteParameter傳送user以及article_id給post -->
-    <form action="/users/add_message/<%= user %>/<%= article_id%>" method="POST">
-        <textarea name="Content" id="" cols="50" rows="25"></textarea>
-        <input type="submit" name="submit" value="送出">
-    </form>
+    <nav>
+        <ul class="list">
+            <li><a href="/">首頁</a></li>
+            <!-- <li><a href="/users/signout">登出</a></li>
+            <li><a href="/users/profile">個人</a></li> -->
+            <div id="nav_right">
+                <% if(session_logined) { %>
+                    <li><a href="/users/signout">登出</a></li>
+                    <li>使用者:<b><%= user %></b></li>
+                <% } else { %>
+                    <li><a href="/users/login">登入</a></li>
+                    <li><a href="/users/register">註冊</a></li>
+                <% } %>
+            </div>
+        </ul>
+    </nav>
+    <header>
+        <h1>留言</h1>
+    </header>
+    <main>
+        <h3>使用者: <%= user %></h3>
+        <!-- 這邊要用RouteParameter傳送user以及article_id給post -->
+        <form action="/users/add_message/<%= user %>/<%= article_id%>" method="POST">
+            <textarea name="Content" id="" cols="100" rows="15"></textarea>
+            <input type="submit" name="submit" value="送出">
+        </form>
+    </main>
+    <footer>
+        <p>手機：0916-680-923 電子郵件：flyotlin@gmail.com  ©  2020  All Rights Reserved</p>
+    </footer>
 </body>
 </html>

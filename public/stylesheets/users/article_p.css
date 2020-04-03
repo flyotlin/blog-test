@@ -1,0 +1,98 @@
+/* 從這裡 */
+* {
+    font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+nav, header, main, footer {
+    width: 70%;
+    margin: 0px auto;
+    
+}
+
+main {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;;
+}
+
+a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.list {
+    padding-left: 0px;
+}
+
+.list li{
+    display: inline;
+}
+
+#nav_right {
+    text-align: right;
+    margin-top: -21.6px;
+}
+
+#article {
+
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+    width: 60%;
+}
+
+table {
+    width: 100%;
+}
+
+table tr {
+    height: 50px;
+    background-color: #c8cfca;
+}
+
+table tr:first-child{
+    text-align: left;
+    background-color: burlywood;
+}
+
+.function_message {
+    background-color: white;
+}
+
+.wide {
+    width: 100px;
+}
+
+.function_message a {
+    color: white;
+    background-color: #fcb72b;
+    padding: 5px;
+    border: 1px solid #fcb72b;
+    border-radius: 10px;
+}
+
+.function_message a:hover {
+    text-decoration: none;
+    background-color: #bfbab0;
+    color: black;
+    border: 1px solid #bfbab0;
+}
+
+footer p {
+    text-align: center;
+}
+
+h2 {
+    border-left: 8px solid #eb7373;
+    padding-left: 5px;
+}

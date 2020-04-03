@@ -236,7 +236,8 @@ router.get('/message/:article_id', function(req, res) {
   res.render('./users/message', {
     title: '留言',
     user: User,
-    article_id: req.params.article_id
+    article_id: req.params.article_id,
+    session_logined: req.session.logined
   });
 });
 
@@ -300,6 +301,8 @@ router.get('/delete_message/:message_id', function(req, res) {
     res.redirect('/');
   });
 });
+
+
 
 module.exports = router;
 

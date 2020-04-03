@@ -1,0 +1,90 @@
+/* 從這裡 */
+* {
+    font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+nav, header, main, footer {
+    width: 70%;
+    margin: 0px auto;
+    
+}
+
+main {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;;
+}
+
+a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* 到這裡 是所有css共用格式 */
+
+#nav_right {
+    text-align: right;
+    margin-top: -21.6px;
+}
+
+table {
+    width: 100%;
+}
+
+tr {
+    height: 50px;
+}
+
+tr:nth-child(odd) {
+    background-color: #f0f5f1;
+    
+}
+
+tr:first-child {
+    background-color: burlywood;
+}
+
+tr:nth-child(n+2):hover {
+    background-color: #c8cfca;
+}
+
+footer p {
+    text-align: center;
+}
+
+.list {
+    padding-left: 0px;
+}
+
+.list li{
+    display: inline;
+}
+
+#function_message a {
+    color: white;
+    background-color: #fcb72b;
+    padding: 5px;
+    border: 1px solid #fcb72b;
+    border-radius: 10px;
+}
+
+#function_message a:hover {
+    text-decoration: none;
+    background-color: #bfbab0;
+    color: black;
+    border: 1px solid #bfbab0;
+}
+
+h2 {
+    border-left: 8px solid #eb7373;
+    padding-left: 5px;  
+}

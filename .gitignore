@@ -1,0 +1,6 @@
+
+# ignore the directory node_module
+/node_modules/*
+# ignore learning.md
+learning.md
+

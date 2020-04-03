@@ -1,0 +1,46 @@
+* {
+    font-family: "Microsoft JhengHei", Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-color: #f5f5f5;
+}
+
+nav, header, main, footer {
+    width: 70%;
+    margin: 0px auto;
+    
+}
+
+main {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;;
+}
+
+a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+#nav_right {
+    text-align: right;
+    margin-top: -21.6px;
+}
+
+.list {
+    padding-left: 0px;
+}
+
+.list li{
+    display: inline;
+}
+
+footer p {
+    text-align: center;
+}

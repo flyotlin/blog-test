@@ -2,60 +2,71 @@
 <html>
   <head>
     <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/index.css' />
+    <link rel='stylesheet' href='/stylesheets/index_p.css' />
   </head>
   <body>
-    <ul class="list">
-      <li><a href="/">首頁</a></li>
-      <% if(authenticated) { %>
-        <li><a href="/users/signout">登出</a></li>
-        <li><a href="/users/add_article">新增文章</a></li>
-        <li><a href="/users/profile">個人</a></li>
-        <li><b><%= user %></b></li>
-      <% } else { %>
-        <li><a href="/users/login">登入</a></li>
-        <li><a href="/users/register">註冊</a></li>
-      <% } %>
-    </ul>
+    <nav>
+      <ul class="list">
+        <li><a href="/">首頁</a></li>
+        <div id="nav_right">
+          <% if(authenticated) { %>
+            <li><a href="/users/add_article">新增文章</a></li>
+            <li><a href="/users/signout">登出</a></li>
+            <li>使用者:<b><%= user %></b></li>
+          <% } else { %>
+            <li><a href="/users/login">登入</a></li>
+            <li><a href="/users/register">註冊</a></li>
+          <% } %>
+          </div>
+        
+      </ul>
+    </nav>
 
-    <h1><%= title %></h1>
-    <p>歡迎來到<%= title %></p>
-	
-    <hr>
+    <header>
+      <h1 style="display: inline; vertical-align: bottom;"><%= title %></h1>
+      <img src="/images/fiveStarCoronavirus.jpg" alt="Five Star Coronavirus" width="100px">
+      <p>歡迎來到<%= title %></p>
+    </header>
 
-    <h2>討論版</h2>
-    <table>
-      <th>
-        <!-- <td>使用者</td> -->
-        <td><b>文章ID</b></td>
-        <td><b>內容</b></td>
-        <td><b>時間</b></td>
-      </th>
-      <% for(var i = 0; i < blogs.length; i++) { %>
+    <main>
+      <h2>武漢肺炎簡介(擷取自維基百科)</h2>
+      <p><b>2019冠狀病毒病疫情</b>，是一次由2019冠狀病毒病引起，在2019年底至2020年散布於超過120個國家或地區並導致超過4000人死亡的流行病疫情。當前疫症仍然在蔓延中，世界衛生組織對疫情的全球風險級別為「非常高」。</p>
+      <h2>疫情</h2>
+      <img src="/images/virus.png" alt="virus condition" width="100%">
+      <h2>討論版</h2>
+      <table>
         <tr>
-          <td><b><%= blogs[i].Username %></b></td>
-          <td><a href="/users/article/<%= blogs[i]._id %>"><%= blogs[i]._id %></a></td>
-          <td><%= blogs[i].Article %></td>
-          <td><%= blogs[i].CreateDate %></td>
+          <th>編號</th>
+          <th style="width: 10%;"><b>作者</b></th>
+          <th><b>內容</b></th>
+          <th><b>時間</b></th>
         </tr>
-      <% } %>
-    </table>
+        <% for(var i = 0; i < blogs.length; i++) { %>
+          <tr>
+            <td><a href="/users/article/<%= blogs[i]._id %>"><%= blogs[i]._id %></a></td>
+            <td><b><%= blogs[i].Username %></b></td>
+            <td><%= blogs[i].Article %></td>
+
+            <td><%= blogs[i].CreateDate.getFullYear() + '/' + String(blogs[i].CreateDate.getMonth()+1).padStart(2, '0') + 
+              '/' + String(blogs[i].CreateDate.getDate()).padStart(2, '0') + ' ' + String(blogs[i].CreateDate.getHours()).padStart(2, '0')
+               + ':' + 
+              String(blogs[i].CreateDate.getMinutes()).padStart(2, '0') + ':' + String(blogs[i].CreateDate.getSeconds()).padStart(2, '0') %></td>
 
 
-    <!-- <br>
-    <% for(var i = 0; i < blogs.length; i++) { %>
-      <div>
-        <div>
-          <%= blogs[i].Username %>
-        </div>
-        <div>
-          <%= blogs[i].CreateDate %>
-        </div>
-        <div>
-          <%= blogs[i].Article %>
-        </div>
-        <hr>
-      </div>
-    <% } %> -->
+          </tr>
+        <% } %>
+      </table>
+    </main>
+    <footer>
+      <p>手機：0916-680-923 電子郵件：flyotlin@gmail.com  ©  2020  All Rights Reserved</p>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
   </body>
 </html>
