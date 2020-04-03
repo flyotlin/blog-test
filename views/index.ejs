@@ -2,25 +2,71 @@
 <html>
   <head>
     <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel='stylesheet' href='/stylesheets/index_p.css' />
   </head>
   <body>
-    <nav>
-      <ul class="list">
-        <li><a href="/">首頁</a></li>
-        <div id="nav_right">
-          <% if(authenticated) { %>
-            <li><a href="/users/add_article">新增文章</a></li>
-            <li><a href="/users/signout">登出</a></li>
-            <li>使用者:<b><%= user %></b></li>
-          <% } else { %>
-            <li><a href="/users/login">登入</a></li>
-            <li><a href="/users/register">註冊</a></li>
-          <% } %>
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <a class="nav-link active" href="/">首頁</a>
+      </li>
+      <% if(authenticated) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/add_article">新增文章</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/signout">登出</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">使用者:<b><%= user %></a>
+        </li>
+      <% } else { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/login">登入</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/register">註冊</a>
+        </li>
+      <% } %>
+        <!-- Button trigger modal -->
+      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal">
+        台灣目前疫情
+      </button>
+    </ul>
+
+    
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog-centered modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">台灣4/3疫情</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
           </div>
-        
-      </ul>
-    </nav>
+          <div class="modal-body">
+            <div class="alert alert-danger" role="alert">
+              截至4/3為止，
+            國內累計348人確診，50人解除隔離
+            </div>
+            中央流行疫情指揮中心今(3)日表示，昨(2)日國內新增827例新型冠狀病毒肺炎相關通報，截至目前累計34,557例(含30,530例排除)，其中348例確診(今日新增案340至348)，分別為298例境外移入及50例本土病例。確診個案中5人死亡，50人解除隔離，其餘持續住院隔離中。有關3月29日及30日定點返台專案航班共367名湖北返台民眾，其中3人有發燒症狀後送就醫；其餘健康情形良好，持續密切健康監測。
+
+指揮中心指出，全球累計990,338例確診，分布於181個國家/地區；病例數以美國238,820例、義大利115,242例、西班牙110,238例、中國大陸81,620例及德國73,522例為多；病例中51,215例死亡，新增5,257例，以義大利13,915例、西班牙10,003例、美國5,758例、法國4,503例及中國大陸3,322例為多。
+
+指揮中心再次提醒，民眾應做好手部衛生與咳嗽禮節。自國外入境時，如有發燒、咳嗽等不適症狀，應主動通報機場及港口檢疫人員並配合防疫措施；返國後應落實14天居家檢疫，如出現疑似症狀，請聯繫衛生局或各縣市關懷中心，並依指示就醫，切勿搭乘大眾運輸工具；就醫時請務必告知醫師旅遊史、職業別、接觸史及是否群聚(TOCC)，以及時診斷通報。
+          <div class="alert alert-light" role="alert">
+            資料來源：https://www.cdc.gov.tw/Bulletin/Detail/-6nGhlSwLvLT_9RzNahBwg?typ資料來源：
+          </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
 
     <header>
       <h1 style="display: inline; vertical-align: bottom;"><%= title %></h1>
@@ -69,4 +115,7 @@
 
     
   </body>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </html>

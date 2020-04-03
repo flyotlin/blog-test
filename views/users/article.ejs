@@ -2,23 +2,31 @@
 <html>
 <head>
     <title><%= article_author%>的文章</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/users/article_p.css">
 </head>
 <body>
-    <nav>
-        <ul class="list">
-            <li><a href="/">首頁</a></li>
-            <div id="nav_right">
-                <% if(session_logined) { %>
-                    <li><a href="/users/signout">登出</a></li>
-                    <li>使用者:<b><%= session_name %></b></li>
-                <% } else { %>
-                    <li><a href="/users/login">登入</a></li>
-                    <li><a href="/users/register">註冊</a></li>
-                <% } %>
-            </div>
-        </ul>
-    </nav>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">首頁</a>
+        </li>
+        <% if(session_logined) { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/signout">登出</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">使用者:<b><%= session_name %></a>
+          </li>
+        <% } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/login">登入</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/users/register">註冊</a>
+          </li>
+        <% } %>
+    </ul>    
+    
     <header>
         <h1>文章編號: <%= article_id%></h1>
     </header>
@@ -29,17 +37,27 @@
         <div>
             <p id="article"><%= article_content%></p>
         </div>
-        <div class="function_message">
+
+        <div>
+            <button type="button" class="btn btn-light" onclick="location.href='/users/message/<%= article_id%>'">留言</button>
+            <% if( session_logined && (session_name == article_author) ) { %>
+                <button type="button" class="btn btn-light" onclick="location.href='/users/change_article/<%= article_id%>'">修改</button>
+                <button type="button" class="btn btn-light" onclick="location.href='/users/delete_article/<%= article_id%>'">刪除</button>
+            <% } %>
+        </div>
+
+        <!-- 原功能按鈕區 -->
+        <!-- <div class="function_message">
             
             <a href="/users/message/<%= article_id%>">留言</a>
             
-            <!-- 如果有登入 且 如果session用戶名與文章作者名相同 -->
+            如果有登入 且 如果session用戶名與文章作者名相同
             <% if( session_logined && (session_name == article_author) ) { %>
                 <a href="/users/change_article/<%= article_id%>">修改</a>
                 <a href="/users/delete_article/<%= article_id%>">刪除</a>
             <% } %>
-           
-        </div>
+        </div> -->
+
         <div>
             <h2>留言</h2>
             <table>
@@ -76,5 +94,9 @@
     <footer>
         <p>手機：0916-680-923 電子郵件：flyotlin@gmail.com  ©  2020  All Rights Reserved</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>

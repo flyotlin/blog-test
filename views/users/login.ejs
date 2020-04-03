@@ -2,10 +2,22 @@
 <html>
 <head>
     <title><%= title%></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="/stylesheets/users/user.css">
 </head>
 <body>
-    <nav>
+    <ul class="nav justify-content-center">
+        <li class="nav-item">
+          <a class="nav-link active" href="/">首頁</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/users/login">登入</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="/users/register">註冊</a>
+        </li>
+    </ul>
+    <!-- <nav>
         <ul class="list">
             <li><a href="/">首頁</a></li>
             <div id="nav_right">
@@ -13,7 +25,7 @@
                 <li><a href="/users/register">註冊</a></li>
             </div>
         </ul>
-    </nav>
+    </nav> -->
     <header>
         <h1>登入</h1>
     </header>
@@ -25,12 +37,16 @@
             <label for="passwd">密碼:</label>
             <input type="password" name="passwd" id="passwd"/>
             <br>
-            <input type="submit" value="登入"/>
+            <input type="submit" value="登入" class="btn btn-primary"/>
         </form>
         <img src="/images/winnie.jpg" alt="" width="100px" style="display: inline;">
     </main>
     <footer>
         <p>手機：0916-680-923 電子郵件：flyotlin@gmail.com  ©  2020  All Rights Reserved</p>
     </footer>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </body>
 </html>
